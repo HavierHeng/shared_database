@@ -1,7 +1,9 @@
 require_relative "../../connection.rb"
 
+Rake::Task["db:schema"].clear
+
 namespace :db do
-    desc 'Create a db/schema.rb file that is portable against any database supported by ACtiveRecord'
+    desc '(Shared_Database) Create a db/schema.rb file that is portable against any database supported by ActiveRecord'
 
     task :schema do
       SharedDatabase.connect_db

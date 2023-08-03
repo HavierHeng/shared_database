@@ -1,7 +1,8 @@
 require_relative "../../connection.rb"
 
+Rake::Task["db:migrate"].clear
 namespace :db do
-    desc "Migrate the database"
+    desc "(Shared_Database) Migrate the database"
     task :migrate do
         SharedDatabase.connect_db
         ActiveRecord::Migrator.migrate(SharedDatabase.db_migrations)

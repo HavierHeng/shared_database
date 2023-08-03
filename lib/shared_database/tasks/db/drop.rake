@@ -1,7 +1,9 @@
 require_relative "../../connection.rb"
 
+Rake::Task["db:drop"].clear
+
 namespace :db do
-    desc "Drop the database"
+    desc "(Shared_Database) Drop the database"
     task :drop do
         SharedDatabase.connect_db
         if SharedDatabase.db_config["adapter"] != "sqlite3"

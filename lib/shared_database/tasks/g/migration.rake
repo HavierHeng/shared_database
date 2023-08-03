@@ -1,7 +1,9 @@
 require File.expand_path("../../../db_config", __FILE__)
 
+Rake::Task["g:migration"].clear
+
 namespace :g do
-    desc "Generate migration"
+    desc "(Shared Database) Generate migration"
     task :migration do
       name = ARGV[1] || raise("Specify name: rake g:migration your_migration")
       timestamp = Time.now.strftime("%Y%m%d%H%M%S")
