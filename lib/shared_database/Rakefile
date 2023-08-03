@@ -1,0 +1,8 @@
+# lib/Rakefile 
+# For plain old Ruby Projects: https://gist.github.com/ntamvl/7a6658b4cd82d6fbd15434f0a9953411
+
+require "shared_database"
+
+path = File.expand_path(__dir__)
+Dir.glob("#{path}/tasks/**/*.rake").each { |f| import f }
+
