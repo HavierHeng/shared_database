@@ -8,7 +8,10 @@ namespace :query do
     desc "(Shared_Database) Resets the count for queries and api_keys tables. Intended usage is through a scheduled task daily"
     task :reset do
         SharedDatabase.connect_db
-        Query.update(:all, count: 0)
-        APIKey.update(:all, count: 0)
+        Query.update_all(count: 0)
+        APIKey.update_all(count: 0)
+        puts "Resetted all queries and api key usages to 0, printing updated values..."
+        Rake::Task["api:list"].invoke
+        Rake::Task["query:list"].invoke
     end
 end
