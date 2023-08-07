@@ -30,4 +30,14 @@ Two other custom rake tasks are also included for use of adding queries, and per
 
 ### Models
 
-Models are stored in [/lib/shared_database/models directory](lib/shared_database/models)
+Models are stored in [/lib/shared_database/models directory](lib/shared_database/models).
+
+Any changes to models requires all the projects requiring the gem to `bundle install` again to update their models accordingly.
+
+### Migrations
+
+Migrations are stored in [/lib/shared_database/db/migrate directory](lib/shared_database/db/migrate). New migrations can be generated using `rake g:migration` from within this repo.
+
+Performing `rake g:migration` from a project importing this Gem results in a temporary change that is not synchronized across projects and hence is not recommended to do so.
+
+Any changes to migrations requires all the projects requiring the gem to `bundle install` again to update their models accordingly.
