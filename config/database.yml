@@ -1,0 +1,24 @@
+development:
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+test:
+  database: db/test.sqlite3
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+production:
+  adapter: postgresql
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  username: <%= ENV["PRODUCTION_DB_USERNAME"] %>
+  password: rememberme
+  database: <%= ENV["PRODUCTION_DB_NAME"] %>
+  port: <%= ENV.fetch("DB_PORT") { 5432 }%>
+  # host: <%= ENV.fetch("DB_SOCKET_DIR") { '/cloudsql' } %>/<%= ENV["CLOUD_SQL_CONNECTION_NAME"] %>  
+  # host: <%= ENV.fetch("INSTANCE_HOST") { "localhost" } %>
+  host: /var/run/postgresql
