@@ -10,6 +10,7 @@ namespace :query do
         new_query = ARGV[1] || raise("Specify name: rake query:add your_new_query")
         SharedDatabase.connect_db
         Query.create(query: new_query)
+        puts "#{new_query} has been added to queries."
         abort
     end
 end

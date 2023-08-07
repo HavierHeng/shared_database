@@ -26,6 +26,9 @@ Two other custom rake tasks are also included for use of adding queries, and per
 | Command          | Function                                               |
 | ---------------- | ------------------------------------------------------ |
 | rake query:add   | Adds an additional search term to be used to pull articles.                                         |
+| rake query:remove   | Removes a search term being used to pull articles.         |
+| rake query:list   | Lists the search terms used to pull articles.                            |
+
 | rake query:reset  | Resets counter for API Keys and Queries, meant to be called daily.                                         |
 
 ### Models
