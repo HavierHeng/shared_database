@@ -6,7 +6,8 @@ namespace :db do
     desc "(Shared_Database) Migrate the database"
     task :migrate do
         SharedDatabase.connect_db
-        ActiveRecord::Migrator.migrate(SharedDatabase.db_migrations)
+        ActiveRecord::Migrator.migrate(SharedDatabase.db_migrations)  # activerecord <5.2
+        # ActiveRecord::MigrationContext.new(SharedDatabase.db_migrations).migrate
         Rake::Task["db:schema:load"].invoke
         puts "Database migrated."
     end

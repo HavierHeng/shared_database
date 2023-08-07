@@ -13,7 +13,7 @@ namespace :g do
       # Creates a migration at project 
       File.open(path, 'w') do |file|
         file.write <<-EOF
-  class #{migration_class} < ActiveRecord::Migration
+  class #{migration_class} < ActiveRecord::Migration[5.2]
     def self.up
     end
     def self.down

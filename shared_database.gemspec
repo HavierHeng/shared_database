@@ -21,14 +21,17 @@ Gem::Specification.new do |s|
     s.required_ruby_version = ">=2.7.0"
 
     s.add_dependency 'pg', '~> 0.20'
-    s.add_dependency 'activerecord', '~> 4.2.11'
+    # s.add_dependency 'activerecord', '~> 5.2.8'  # for rails 5.2
+    s.add_dependency 'activerecord',  '~> 4.2.11'
     s.add_dependency 'dotenv'
     s.add_dependency 'bigdecimal', '~> 1.4'
+    # s.add_dependency 'neighbor'
 
     s.add_development_dependency 'rake'
     s.add_development_dependency 'rspec'
     s.add_development_dependency 'irb'
     s.add_development_dependency 'sqlite3', '~> 1.3.0'
+    # s.add_development_dependency 'sqlite3'  # for rails 5.2
 
     s.homepage    = 'https://github.com/Service-Design-Studio/1d-final-project-2023-sds-2023-team-06'
     s.metadata    = { "source_code_uri" => 'https://github.com/Service-Design-Studio/1d-final-project-2023-sds-2023-team-06' }

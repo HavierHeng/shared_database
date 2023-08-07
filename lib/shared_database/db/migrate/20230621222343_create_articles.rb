@@ -15,7 +15,7 @@ class CreateArticles < ActiveRecord::Migration
       t.text :long_summary, :comment => "Detail summary of the article"
       t.string :category, :comment => "Category of the article"
 
-      t.timestamps  # macro for created_at and updated_at for entry
+      t.timestamps :null => false  # macro for created_at and updated_at for entry
     end
   end
 end

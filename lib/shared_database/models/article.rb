@@ -6,6 +6,9 @@ class Article < ActiveRecord::Base
 
     has_many :feedbacks
     has_many :users, through: :feedbacks
+
+    # for embedding, text prediction, requires rails 5.2
+    # has_neighbors :embedding
     
     def self.get_page(start_id, end_id, order)
         max_pagesize = 100
