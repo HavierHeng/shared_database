@@ -11,10 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20230731141625) do
+ActiveRecord::Schema.define(version: 20230807090012) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  create_table "api_keys", force: :cascade do |t|
+    t.string   "api_key"
+    t.integer  "count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "articles", force: :cascade do |t|
     t.string   "identifier",    limit: 512
@@ -42,8 +46,8 @@ ActiveRecord::Schema.define(version: 20230731141625) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "feedbacks", ["article_id"], name: "index_feedbacks_on_article_id", using: :btree
-  add_index "feedbacks", ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
+  add_index "feedbacks", ["article_id"], name: "index_feedbacks_on_article_id"
+  add_index "feedbacks", ["user_id"], name: "index_feedbacks_on_user_id"
 
   create_table "group_articles", force: :cascade do |t|
     t.integer  "group_id"
@@ -52,13 +56,20 @@ ActiveRecord::Schema.define(version: 20230731141625) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "group_articles", ["article_id"], name: "index_group_articles_on_article_id", using: :btree
-  add_index "group_articles", ["group_id"], name: "index_group_articles_on_group_id", using: :btree
+  add_index "group_articles", ["article_id"], name: "index_group_articles_on_article_id"
+  add_index "group_articles", ["group_id"], name: "index_group_articles_on_group_id"
 
   create_table "groups", force: :cascade do |t|
     t.string   "group_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "queries", force: :cascade do |t|
+    t.string   "query"
+    t.integer  "count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "user_groups", force: :cascade do |t|
@@ -68,8 +79,8 @@ ActiveRecord::Schema.define(version: 20230731141625) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "user_groups", ["group_id"], name: "index_user_groups_on_group_id", using: :btree
-  add_index "user_groups", ["user_id"], name: "index_user_groups_on_user_id", using: :btree
+  add_index "user_groups", ["group_id"], name: "index_user_groups_on_group_id"
+  add_index "user_groups", ["user_id"], name: "index_user_groups_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "staff_id"

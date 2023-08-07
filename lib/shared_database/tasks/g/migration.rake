@@ -3,11 +3,11 @@ require File.expand_path("../../../db_config", __FILE__)
 Rake::Task["g:migration"].clear if Rake::Task.task_defined?("g:migration")
 
 namespace :g do
-    desc "(Shared Database) Generate migration"
+    desc "(Shared Database) Generate migrations within the Gem itself. Ignores usual path to migrations."
     task :migration do
       name = ARGV[1] || raise("Specify name: rake g:migration your_migration")
       timestamp = Time.now.strftime("%Y%m%d%H%M%S")
-      path = File.join(SharedDatabase.project_root, "db/migrate/#{timestamp}_#{name}.rb")
+      path = File.join(SharedDatabase.db_migrations, "#{timestamp}_#{name}.rb")
       migration_class = name.split("_").map(&:capitalize).join
   
       # Creates a migration at project 

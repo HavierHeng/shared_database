@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
 
     s.add_development_dependency 'rake'
     s.add_development_dependency 'rspec'
+    s.add_development_dependency 'irb'
     s.add_development_dependency 'sqlite3', '~> 1.3.0'
 
     s.homepage    = 'https://github.com/Service-Design-Studio/1d-final-project-2023-sds-2023-team-06'

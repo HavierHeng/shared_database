@@ -10,7 +10,7 @@ Rather than copy-pasting and synchronizing multiple model objects manually, havi
 
 ### Rake tasks
 
-There are 6 rake tasks that override the rake tasks defined by Railties in Rails as specified in [railties.rb](lib/shared_database/railtie.rb). If running in a non-rails environment, these are standalone rake tasks as specified in [Rakefile](lib/shared_database/Rakefile).
+There are 7 rake tasks that override the rake tasks defined by Railties in Rails as specified in [railties.rb](lib/shared_database/railtie.rb). If running in a non-rails environment, these are standalone rake tasks as specified in [Rakefile](lib/shared_database/Rakefile).
 
 | Command          | Function                                               |
 | ---------------- | ------------------------------------------------------ |
@@ -18,9 +18,16 @@ There are 6 rake tasks that override the rake tasks defined by Railties in Rails
 | rake db:migrate  | Run migrations                                         |
 | rake db:drop     | Delete the DB                                          |
 | rake db:reset    | Combination of Create, Migrate and Drop                |
-| rake db:schema   | Creates a Schema file of the current DB                |
+| rake db:schema:dump   | Creates a Schema file of the current DB                |
+| rake db:schema:load | Loads the Schema.rb file within the gem into the current DB |
 | rake g:migration | Generate a new blank migration file with the timestamp |
+
+Two other custom rake tasks are also included for use of adding queries, and performing some daily cleanup.
+| Command          | Function                                               |
+| ---------------- | ------------------------------------------------------ |
+| rake query:add   | Adds an additional search term to be used to pull articles.                                         |
+| rake query:reset  | Resets counter for API Keys and Queries, meant to be called daily.                                         |
 
 ### Models
 
-Models are stored in [/lib/shared_database/models directory](lib/shared_database/models/article.rb)
+Models are stored in [/lib/shared_database/models directory](lib/shared_database/models)

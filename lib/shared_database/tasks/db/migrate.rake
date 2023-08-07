@@ -7,7 +7,7 @@ namespace :db do
     task :migrate do
         SharedDatabase.connect_db
         ActiveRecord::Migrator.migrate(SharedDatabase.db_migrations)
-        Rake::Task["db:schema"].invoke
+        Rake::Task["db:schema:load"].invoke
         puts "Database migrated."
     end
 end
