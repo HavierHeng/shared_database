@@ -12,12 +12,12 @@ test:
 
 production:
   adapter: postgresql
-  encoding: utf8
+  encoding: utf8  # cloud sql uses utf8, assuming your local instance is reconfigured properly, it should be too
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
-  username: <%= ENV["PRODUCTION_DB_USERNAME"] %>
+  username: dnata
   password: rememberme
-  database: <%= ENV["PRODUCTION_DB_NAME"] %>
+  database: monolith_db
   port: <%= ENV.fetch("DB_PORT") { 5432 }%>
   # host: <%= ENV.fetch("DB_SOCKET_DIR") { '/cloudsql' } %>/<%= ENV["CLOUD_SQL_CONNECTION_NAME"] %>  
   # host: <%= ENV.fetch("INSTANCE_HOST") { "localhost" } %>
