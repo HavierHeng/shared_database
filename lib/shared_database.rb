@@ -9,8 +9,10 @@ module SharedDatabase
 
     # Set up a connection pool, and then connect to model
     # require all models in shared_database/models
-    SharedDatabase.connect_db
     if SharedDatabase.db_connectable?
         Dir[File.join(__dir__, "shared_database", "models", "*.rb")].each { |file| require_relative file }
+        puts "Models have been imported"
+    else
+        puts "Failed to import models"
     end
 end

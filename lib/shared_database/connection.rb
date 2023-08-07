@@ -24,10 +24,13 @@ module SharedDatabase
 
     def self.db_connectable?
         begin
-            conncetion = SharedDatabase.connect_public_db  # use default postgres which is guaranteed to be created
+            if SharedDatabase.db_config["adapter"] == "postgresql"
+                SharedDatabase.connect_public_db  # use default postgres which is guaranteed to be created
+            else
+                SharedDatabase.connect_db
+            end
             ActiveRecord::Base.connection
             ActiveRecord::Base.connected?
-            ActiveRecord::Base.remove_connection(connection)
         rescue
             false  # failure to connect
         end
