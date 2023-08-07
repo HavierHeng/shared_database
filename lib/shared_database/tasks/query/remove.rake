@@ -9,7 +9,7 @@ namespace :query do
     task :remove do
         old_query = ARGV[1] || raise("Specify name: rake query:remove query_to_be_removed")
         SharedDatabase.connect_db
-        Query.destroy_by(query: old_query)
+        Query.find_by(query: old_query).destroy_all
         puts "#{old_query} has been removed from queries."
         abort
     end
