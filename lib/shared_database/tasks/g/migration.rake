@@ -1,6 +1,6 @@
 require File.expand_path("../../../db_config", __FILE__)
 
-Rake::Task["g:migration"].clear
+Rake::Task["g:migration"].clear if Rake::Task.task_defined?("g:migration")
 
 namespace :g do
     desc "(Shared Database) Generate migration"

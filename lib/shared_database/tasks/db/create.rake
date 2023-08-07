@@ -1,6 +1,6 @@
 require_relative "../../connection.rb"
 
-Rake::Task["db:create"].clear
+Rake::Task["db:create"].clear if Rake::Task.task_defined?("db:create")
 
 namespace :db do
     desc "(Shared_Database) Creates the database"

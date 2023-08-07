@@ -1,6 +1,6 @@
 require_relative "../../connection.rb"
 
-Rake::Task["db:drop"].clear
+Rake::Task["db:drop"].clear if Rake::Task.task_defined?("db:drop")
 
 namespace :db do
     desc "(Shared_Database) Drop the database"
