@@ -13,28 +13,28 @@
 
 ActiveRecord::Schema.define(version: 20230808032646) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "api_keys", force: :cascade do |t|
     t.string   "api_key"
-    t.integer  "count"
+    t.integer  "usage"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "articles", force: :cascade do |t|
-    t.string   "identifier",    limit: 512
-    t.string   "name",          limit: 512
-    t.string   "author",        limit: 512
-    t.string   "title",         limit: 1024, null: false
-    t.text     "description",                null: false
-    t.string   "url",           limit: 2048, null: false
-    t.string   "url_to_image",  limit: 2048
+    t.string   "identifier",   limit: 512
+    t.string   "name",         limit: 512
+    t.string   "author",       limit: 512
+    t.string   "title",        limit: 1024, null: false
+    t.text     "description",               null: false
+    t.string   "url",          limit: 2048, null: false
+    t.string   "url_to_image", limit: 2048
     t.datetime "published_at"
-    t.text     "content"
-    t.text     "short_summary"
-    t.text     "long_summary"
     t.string   "category"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   create_table "feedbacks", force: :cascade do |t|
@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 20230808032646) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "feedbacks", ["article_id"], name: "index_feedbacks_on_article_id"
-  add_index "feedbacks", ["user_id"], name: "index_feedbacks_on_user_id"
+  add_index "feedbacks", ["article_id"], name: "index_feedbacks_on_article_id", using: :btree
+  add_index "feedbacks", ["user_id"], name: "index_feedbacks_on_user_id", using: :btree
 
   create_table "group_articles", force: :cascade do |t|
     t.integer  "group_id"
@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(version: 20230808032646) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "group_articles", ["article_id"], name: "index_group_articles_on_article_id"
-  add_index "group_articles", ["group_id"], name: "index_group_articles_on_group_id"
+  add_index "group_articles", ["article_id"], name: "index_group_articles_on_article_id", using: :btree
+  add_index "group_articles", ["group_id"], name: "index_group_articles_on_group_id", using: :btree
 
   create_table "groups", force: :cascade do |t|
     t.string   "group_name"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20230808032646) do
 
   create_table "queries", force: :cascade do |t|
     t.string   "query"
-    t.integer  "count"
+    t.integer  "usage"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -79,8 +79,8 @@ ActiveRecord::Schema.define(version: 20230808032646) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "user_groups", ["group_id"], name: "index_user_groups_on_group_id"
-  add_index "user_groups", ["user_id"], name: "index_user_groups_on_user_id"
+  add_index "user_groups", ["group_id"], name: "index_user_groups_on_group_id", using: :btree
+  add_index "user_groups", ["user_id"], name: "index_user_groups_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "staff_id"
@@ -91,4 +91,10 @@ ActiveRecord::Schema.define(version: 20230808032646) do
     t.datetime "updated_at",  null: false
   end
 
+  add_foreign_key "feedbacks", "articles"
+  add_foreign_key "feedbacks", "users"
+  add_foreign_key "group_articles", "articles"
+  add_foreign_key "group_articles", "groups"
+  add_foreign_key "user_groups", "groups"
+  add_foreign_key "user_groups", "users"
 end
