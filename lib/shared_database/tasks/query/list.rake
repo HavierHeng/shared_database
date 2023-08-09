@@ -11,7 +11,7 @@ namespace :query do
         puts "All queries that are to be performed:"
         puts "-" * 65
         Query.all.each do |query|    
-            puts query.query.center(30) + " | " + query.usage.to_s.center(30)
+            puts query.query.center(75) + " | " + query.usage.to_s.center(10)
         end
     end
 end
