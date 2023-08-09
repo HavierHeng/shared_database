@@ -5,7 +5,7 @@ if !defined?(APIKey)
 end
 
 namespace :api do
-    desc "(Shared_Database) Gets all queries in the queries table."
+    desc "(Shared_Database) Gets all API keys in the api_key table."
     task :list do
         SharedDatabase.connect_db
         puts "All API keys that are to be available:"

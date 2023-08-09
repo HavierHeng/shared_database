@@ -22,14 +22,16 @@ There are 7 rake tasks that override the rake tasks defined by Railties in Rails
 | rake db:schema:load | Loads the Schema.rb file within the gem into the current DB |
 | rake g:migration | Generate a new blank migration file with the timestamp |
 
-Two other custom rake tasks are also included for use of adding queries, and performing some daily cleanup.
+Custom rake tasks are also included for use of adding queries, and performing some daily cleanup.
 | Command          | Function                                               |
 | ---------------- | ------------------------------------------------------ |
 | rake query:add   | Adds an additional search term to be used to pull articles.                                         |
 | rake query:remove   | Removes a search term being used to pull articles.         |
 | rake query:list   | Lists the search terms used to pull articles.                            |
-
 | rake query:reset  | Resets counter for API Keys and Queries, meant to be called daily.                                         |
+| rake api:add  |  Adds an api key to the api_key table                                        |
+| rake api:list  | Gets all API keys in the api_key table                                         |
+| rake api:remove  | Removes an api key from table                                         |
 
 ### Models
 

@@ -5,7 +5,7 @@ if !defined?(APIKey)
 end
 
 namespace :api do
-    desc "(Shared_Database) Adds an api key to the queries table."
+    desc "(Shared_Database) Adds an api key to the api_key table."
     task :add do
         new_key = ARGV[1] || raise("Specify name: rake api:add your_new_key")
         SharedDatabase.connect_db
