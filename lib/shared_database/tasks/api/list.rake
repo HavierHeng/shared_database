@@ -11,7 +11,7 @@ namespace :api do
         puts "All API keys that are to be available:"
         puts "-" * 65
         APIKey.all.each do |api_key|    
-            puts api_key.api_key.center(30) + " | " + api_key.usage.to_s.center(30)
+            puts api_key.api_key.center(75) + " | " + api_key.usage.to_s.center(10)
         end
     end
 end
