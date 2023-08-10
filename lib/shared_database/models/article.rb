@@ -30,7 +30,7 @@ class Article < ActiveRecord::Base
 
         offset_value = (page - 1) * pagesize
 
-        where("category = ?", category)
+        where("category LIKE ?", "%#{category}%")
         .offset(offset_value)
         .limit(pagesize)
         .to_a
